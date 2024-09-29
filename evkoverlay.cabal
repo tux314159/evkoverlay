@@ -1,0 +1,89 @@
+cabal-version: 2.2
+
+-- This file has been generated from package.yaml by hpack version 0.37.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           evkoverlay
+version:        0.1.0.0
+synopsis:       Keypress display tool for Wayland using Linux's evdev
+description:    Please see the README on GitHub at <https://github.com/tux314159/evkoverlay#readme>
+category:       Utilities
+homepage:       https://github.com/tux314159/evkoverlay#readme
+bug-reports:    https://github.com/tux314159/evkoverlay/issues
+author:         Isaac
+maintainer:     tux314159@gmail.com
+copyright:      2024 Isaac Yeo
+license:        BSD-3-Clause
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/tux314159/evkoverlay
+
+library
+  exposed-modules:
+      System.Evdev.Event
+      System.Evdev.KeyCode
+  other-modules:
+      Paths_evkoverlay
+  autogen-modules:
+      Paths_evkoverlay
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , containers
+    , extra
+    , h-raylib
+    , lens
+    , mtl
+  default-language: Haskell2010
+
+executable evkoverlay
+  main-is: Main.hs
+  other-modules:
+      App
+      Paths_evkoverlay
+  autogen-modules:
+      Paths_evkoverlay
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , containers
+    , evkoverlay
+    , extra
+    , h-raylib
+    , lens
+    , mtl
+  default-language: Haskell2010
+
+test-suite evkoverlay-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_evkoverlay
+  autogen-modules:
+      Paths_evkoverlay
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , containers
+    , evkoverlay
+    , extra
+    , h-raylib
+    , lens
+    , mtl
+  default-language: Haskell2010
