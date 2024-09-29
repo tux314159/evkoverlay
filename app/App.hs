@@ -129,7 +129,7 @@ app config = do
           configWindowScaling = scale
         } = config
   setConfigFlags [Ray.WindowTransparent, Ray.WindowUndecorated]
-  window <- initWindow (scale * winw) (scale * winh) "hello"
+  window <- initWindow (scale * winw) (scale * winh) "evdev keyboard overlay"
   setTargetFPS (configWindowFps config)
   void . withOpenDevice inputFile $ \dev ->
     runReaderT
