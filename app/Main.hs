@@ -41,7 +41,7 @@ defaultAppConfig =
   Env
     { configInputFile = "/dev/input/event2",
       configWindowSize = (7, 5),
-      configWindowScaling = 30,
+      configWindowScaling = 40,
       configWindowFps = 144,
       configKeyDisplay = [jumpKey1, jumpKey2, dashKey, demoKey, grabKey, leftKey, upKey, downKey, rightKey],
       configKeyReleasedColor = Col.gray,
