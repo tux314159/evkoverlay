@@ -6,7 +6,7 @@ order to be able to access files in /dev/input/, but I really cannot
 think of any way around that for now.
 
 ## Building
-This tool is writing in Haskell and is built using
+This tool is written in Haskell and is built using
 [stack](https://docs.haskellstack.org/en/stable/), just run `stack
 install` to build and install the executable.
 
