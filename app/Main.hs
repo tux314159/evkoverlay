@@ -7,6 +7,7 @@ module Main (main) where
 
 import App
 import System.Evdev.KeyCode
+import qualified Raylib.Types as Ray
 import qualified Raylib.Util.Colors as Col
 
 jumpKey1 :: Key
@@ -39,12 +40,12 @@ rightKey = makeKey KeyRight ">" (4, 0) (2, 2)
 defaultAppConfig :: Env
 defaultAppConfig =
   Env
-    { configInputFile = "/dev/input/event2",
+    { configInputFile = "/dev/input/by-path/platform-i8042-serio-0-event-kbd",
       configWindowSize = (7, 5),
       configWindowScaling = 40,
       configWindowFps = 144,
       configKeyDisplay = [jumpKey1, jumpKey2, dashKey, demoKey, grabKey, leftKey, upKey, downKey, rightKey],
-      configKeyReleasedColor = Col.blank,
+      configKeyReleasedColor = Ray.Color 70 70 70 200,
       configKeyPressedColor = Col.blue,
       configFontSize = 20,
       -- don't touch unless you know what these are

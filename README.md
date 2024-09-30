@@ -14,6 +14,13 @@ install` to build and install the executable.
 [Raylib](https://www.raylib.com/) is needed.
 
 ## Usage
+Before usage, you _must_ change the value of `configInputFile` in
+`app/Main.hs` (and of course rebuild) to whatever your keyboard
+device is. To find out, look in `/proc/input/by-path` and look for
+any file that vaguely looks like a keyboard (kbd, keyboard, etc.),
+for example `/dev/input/by-path/platform-i8042-serio-0-event-kbd`.
+This only needs to be done once.
+
 As mentioned, this tool must be run with elevated privileges (`sudo
 evkoverlay`) in order to access raw input devices. Configuration,
 e.g. changing your keys or layout, can be done by editing
