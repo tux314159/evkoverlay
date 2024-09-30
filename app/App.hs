@@ -49,15 +49,6 @@ data Env = Env
     configSizeofSusecondsT :: Int
   }
 
-data Event = Event
-  { evTimeSecs :: Int,
-    evTimeUsecs :: Int,
-    evType :: Int,
-    evCode :: Int,
-    evValue :: Int
-  }
-  deriving (Show)
-
 withOpenDevice :: (MonadIO m) => String -> (Handle -> m a) -> m a
 withOpenDevice inputFile f = do
   dev <- liftIO $ openBinaryFile inputFile ReadMode
@@ -86,7 +77,7 @@ drawKey key keyPressed = do
   liftIO $ do
     drawRectangle x y w h (if keyPressed then pressCol else relCol)
     drawRectangleLines x y w h Col.white
-    drawText (keyLabel key) (midX - labelWidth `div` 2) (midY - fontsize `div` 2) fontsize Col.black
+    drawText (keyLabel key) (midX - labelWidth `div` 2) (midY - fontsize `div` 2) fontsize Col.white
 
 drawFrame :: (MonadReader Env m, MonadIO m) => AppState -> m ()
 drawFrame appState = do

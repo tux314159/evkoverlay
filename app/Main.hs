@@ -13,7 +13,7 @@ jumpKey1 :: Key
 jumpKey1 = makeKey KeyC "jump" (4, 3) (2, 1)
 
 jumpKey2 :: Key
-jumpKey2 = makeKey KeyD "jump" (4, 2) (2, 1)
+jumpKey2 = makeKey KeySpace "jump" (4, 2) (2, 1)
 
 dashKey :: Key
 dashKey = makeKey KeyX "dash" (2, 2) (2, 1)
@@ -44,7 +44,7 @@ defaultAppConfig =
       configWindowScaling = 40,
       configWindowFps = 144,
       configKeyDisplay = [jumpKey1, jumpKey2, dashKey, demoKey, grabKey, leftKey, upKey, downKey, rightKey],
-      configKeyReleasedColor = Col.gray,
+      configKeyReleasedColor = Col.blank,
       configKeyPressedColor = Col.blue,
       configFontSize = 20,
       -- don't touch unless you know what these are
