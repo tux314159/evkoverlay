@@ -24,6 +24,8 @@ dependencies:
 - bytestring
 - containers
 - extra
+- text
+- template-haskell
 - lens
 - h-raylib
 - mtl
