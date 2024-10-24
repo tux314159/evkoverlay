@@ -14,7 +14,6 @@ where
 
 import Control.Lens
 import Control.Monad
-import Control.Monad.Extra
 import Control.Monad.Reader
 import Control.Monad.State.Strict
 import qualified Data.Set as S
@@ -28,9 +27,6 @@ import System.Evdev.KeyCode
 import System.IO
 
 data Key = Key {keyKey :: KeyCode, keyLabel :: String, keyPosition :: Ray.Vector2, keySize :: Ray.Vector2}
-
-instance Eq Key where
-  k1 == k2 = keyKey k1 == keyKey k2
 
 newtype AppState = AppState {_keysPressed :: S.Set KeyCode}
 
@@ -102,6 +98,8 @@ appLoop device = do
     _ -> pure ()
 
   whenM (not <$> liftIO windowShouldClose) $ appLoop device
+  where
+    whenM p f = p >>= (`when` f)
 
 makeKey :: KeyCode -> String -> (Int, Int) -> (Int, Int) -> Key
 makeKey code label (x, y) (w, h) =

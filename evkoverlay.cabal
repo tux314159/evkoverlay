@@ -41,7 +41,6 @@ library
       base >=4.7 && <5
     , bytestring
     , containers
-    , extra
     , h-raylib
     , lens
     , mtl
@@ -64,7 +63,6 @@ executable evkoverlay
     , bytestring
     , containers
     , evkoverlay
-    , extra
     , h-raylib
     , lens
     , mtl
@@ -87,7 +85,6 @@ test-suite evkoverlay-test
     , bytestring
     , containers
     , evkoverlay
-    , extra
     , h-raylib
     , lens
     , mtl

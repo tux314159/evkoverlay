@@ -36,10 +36,10 @@ genKeyCodes keyCodeName fromKeyCodeName keys = do
           [t|(Integral $tyVar) => $tyVar -> Maybe $keyCodeT|]
 
   funDefs <-
-      pure <$>
-        funD
-          (mkName fromKeyCodeName)
-          (genFuncClause <$> keys)
+    pure
+      <$> funD
+        (mkName fromKeyCodeName)
+        (genFuncClause <$> keys)
 
   pure $ keyCodeType : funSig : funDefs
   where
@@ -47,19 +47,22 @@ genKeyCodes keyCodeName fromKeyCodeName keys = do
     mkKeyCons = fmap mkKeyCon
     genFuncClause (res, num) =
       clause
-          (pure [p|$(litP . IntegerL . fromIntegral $ num)|])
-          (normalB [e|Just $(conE . mkName . unpack $ res)|])
-          []
+        (pure [p|$(litP . IntegerL . fromIntegral $ num)|])
+        (normalB [e|Just $(conE . mkName . unpack $ res)|])
+        []
 
 readLinuxInputHdr :: FilePath -> Q [(Text, Int)]
 readLinuxInputHdr path =
   mapMaybe
-    ( toTup . filter (not . T.null) . T.split isSpace
+    ( packKey
+        . filter (not . T.null)
+        . T.split isSpace
         <=< T.stripPrefix "#define KEY_"
     )
     . T.splitOn "\n"
     <$> runIO (T.readFile path)
   where
-    toTup (def : code : _) = readMaybe (T.unpack code)
-      >>= \x -> Just ("Key" <> T.toTitle def, x)
-    toTup _ = Nothing
+    packKey (def : code : _) = do
+      key <- readMaybe (T.unpack code)
+      pure ("Key" <> T.toTitle def, key)
+    packKey _ = Nothing
